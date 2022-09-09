@@ -1,0 +1,22 @@
+# Python-generated
+*__pycache__
+*.egg-info
+dist/
+build/
+
+# pydoc generated documentation
+html/
+
+# Coverage generated
+.coverage
+htmlcov
+
+# Test
+tests.log
+
+## Project-specific stuff
+# Example: generated XYZ goes here
+dump/
+
+# virtual env 
+v/

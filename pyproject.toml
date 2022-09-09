@@ -1,0 +1,42 @@
+[project]
+name = "mypackage"
+version = "0.1.0"
+description = "A sample Python package"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE.txt"}
+keywords = ["ionos-cloud", "ops-tools"]
+authors = [
+  {email = "max.mustermann@ionos.com"},
+  {name = "Max Mustermann"}
+]
+maintainers = [
+  {name = "Tommy Atkins", email = "tommy.atkins@ionos.com"}
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+dependencies = [
+    "jinja2"
+]
+
+[project.optional-dependencies] 
+dev = [
+    "black",
+    "pylint",
+    "isort",
+    "coverage",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+ohoo = "mymodule:main"
+
