@@ -5,7 +5,7 @@ The project contains a module, a command-line script, and a unit test. To instal
 with
 
 ```
-git clone
+git clone git@gitlab.pb.local:tvendelin/python-project-template.git
 python -m venv v
 . v/bin/activate
 pip install -e ".[dev]"
