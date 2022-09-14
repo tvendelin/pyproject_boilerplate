@@ -59,3 +59,27 @@ development's sake, the project root is the most natural place for it, but then 
 git-ignored. Instead of five developers adding their `venv` directory name each to `.gitignore`, one
 commented entry should do the trick (see [.gitignore example](.gitignore)).
 
+## Version and Releases
+
+The last annotated git tag that complies to version format is the single source of truth regarding
+the software being released. The Python wheel version as well as OS-specific package version should
+be generated based on that.
+
+### pyproject.toml
+
+Allows dynamic version specification, and there are several tools/plugins supporting this
+functionality. In this project, `setuptools-git-versioning` is used, but even with `setuptools`,
+this is not the only option.
+
+### `debian/changelog`
+
+The project includes `changelog.sh` script that generates `debian/changelog` file based on annotated
+git tags. The only limitation is that metadata field is set statically to `urgency=medium`. This
+_can_ be implemented, but so far we haven't used it for any practical purpose.
+According to []deb-changelog(5)](https://manpages.debian.org/testing/dpkg-dev/deb-changelog.5.en.html),
+
+>metadata lists zero or more comma-separated keyword=value items
+
+meaning the field is optional anyway.
+
+
