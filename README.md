@@ -49,15 +49,46 @@ If a project contains command-line utilities, these should be exposed as such us
 This will resolve issues with hardcoded path to a python interpreter, not to mention clear
 documentation of what is available to the end user.
 
-A `Makefile` covering the main tasks: test, build, generate HTML documentation, etc. with uniform
-target names. So instead of figuring out, whether `pytest` or `unitttest` or whatever else should be
-used, one can just `make test` to run unit tests or `make doc` to generate documentation.
-
 A `.gitignore` file covering generated files and folders.  Non-trivial entries (at least) must be
 commented.  Example: In all likelihood, a developer would use a virtual environment.  For
 development's sake, the project root is the most natural place for it, but then it should be
 git-ignored. Instead of five developers adding their `venv` directory name each to `.gitignore`, one
 commented entry should do the trick (see [.gitignore example](.gitignore)).
+
+## Goals and Means, or Which Tools to Use?
+
+The goals are important, the means less so.
+
+Valid goals for a software could be:
+- it should work according to the requirements
+- it should comply with coding standards 
+- it should have a reasonable test coverage
+- the API documentation can be extracted from source code and generated as HTML
+- the automatic build pipelines should work without unnecessary tweaking
+
+On the other hand, it doesn't matter much, which framework is used to run the unit tests, or whether
+the HTML documentation is generated with `Sphynx` or `pydoc`. 
+
+### Indirection Using Makefile
+
+A project should contain a `Makefile` with standard, mandatory, intuitive target names. This
+facilitates simpler CI/CD pipelines. The following commands hardly need any explanations:
+
+```
+make test
+make coverage
+make doc
+make build
+```
+
+On the other hand, amounts of time saved by avoiding `unittest` over `pytest` or `setuptools` over
+`poetry` arguments would be substantial.
+
+### Code Formatters
+
+By contrast with the above, these should be the same across the team(s), and be set up in build
+pipeline directly. Care should be taken to exclude the tools with overlapping functionality, i.e.,
+if the code formatted with `black` is always PEP8-compliant, do we need `flake8`?
 
 ## Version and Releases
 
@@ -76,10 +107,21 @@ this is not the only option.
 The project includes `changelog.sh` script that generates `debian/changelog` file based on annotated
 git tags. The only limitation is that metadata field is set statically to `urgency=medium`. This
 _can_ be implemented, but so far we haven't used it for any practical purpose.
-According to []deb-changelog(5)](https://manpages.debian.org/testing/dpkg-dev/deb-changelog.5.en.html),
+According to [deb-changelog(5)](https://manpages.debian.org/testing/dpkg-dev/deb-changelog.5.en.html),
 
 >metadata lists zero or more comma-separated keyword=value items
 
 meaning the field is optional anyway.
 
+### What if...
 
+Q: Someone changes/deletes a version tag? 
+
+A: While it is technically possible, it must be a deliberate two-step action: 
+- delete the tag locally
+- push the change to upstream
+
+In that sense, it hardly differs from manual modification of static text file.
+
+Apart from that, Gitlab at least offers a "protected tag" feature. While changing a tag pushed to
+upstream remains possible, it requires maintainer access rights and involves some fiddling.
