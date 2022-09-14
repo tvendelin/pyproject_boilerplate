@@ -96,7 +96,7 @@ The last annotated git tag that complies to version format is the single source 
 the software being released. The Python wheel version as well as OS-specific package version should
 be generated based on that.
 
-### pyproject.toml
+### `pyproject.toml`
 
 Allows dynamic version specification, and there are several tools/plugins supporting this
 functionality. In this project, `setuptools-git-versioning` is used, but even with `setuptools`,
