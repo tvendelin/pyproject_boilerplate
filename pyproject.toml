@@ -22,11 +22,26 @@ dependencies = [
     "jinja2"
 ]
 
+# CLI scripts that the package provides
+
+[project.scripts]
+ohoo = "mymodule:main"
+
+
+# Development-related configuration below this line
+# -------------------------------------------------
+
+[build-system]
+requires = ["setuptools >= 61.0.0", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+# Separate dependencies required for development
+# from the dependencies of the code itself
 [project.optional-dependencies] 
 dev = [
     "black",
     "pylint",
-    "isort",
+    "isort >= 5.0.0",
     "coverage",
     "toml-cli",
 ]
@@ -36,11 +51,22 @@ where = ["src"]
 
 [tool.setuptools-git-versioning]
 enabled = true
+template = "{tag}"
 
-[build-system]
-requires = ["setuptools >= 61.0.0", "setuptools-git-versioning"]
-build-backend = "setuptools.build_meta"
+# Linters, formatters, code analysers
+# CUSTOMIZATIONS MUST BE JUSTIFIED & DOCUMENTED IN COMMENTS HERE
 
-[project.scripts]
-ohoo = "mymodule:main"
+# Maximum line length is set to 99 in several tools
+# This is common preference at Ionos Cloud
+
+[tool.pylint.basic]
+# foo, bar, etc. are used in example code
+bad-names = []
+max-line-length = 99 
+
+[tool.black]
+line-length = 99
+
+[tool.isort]
+profile = "black"
 
