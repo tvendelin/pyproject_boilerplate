@@ -104,10 +104,11 @@ this is not the only option.
 
 ### `debian/changelog`
 
-The project includes `changelog.sh` script that generates `debian/changelog` file based on annotated
-git tags. The only limitation is that metadata field is set statically to `urgency=medium`. This
-_can_ be implemented, but so far we haven't used it for any practical purpose.
-According to [deb-changelog(5)](https://manpages.debian.org/testing/dpkg-dev/deb-changelog.5.en.html),
+The project includes [`changelog.sh`](build_scripts/changelog.sh) script that generates the contents
+of `debian/changelog` file based on annotated git tags. The only limitation is that metadata field
+is set statically to `urgency=medium`. This _can_ be implemented, but so far we haven't used it for
+any practical purpose.  According to
+[deb-changelog(5)](https://manpages.debian.org/testing/dpkg-dev/deb-changelog.5.en.html),
 
 >metadata lists zero or more comma-separated keyword=value items
 

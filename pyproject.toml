@@ -70,3 +70,14 @@ line-length = 99
 [tool.isort]
 profile = "black"
 
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    # Have to re-enable the standard pragma
+    "pragma: no cover",
+    "if __name__ == '__main__'",
+
+]
+fail_under = 100
