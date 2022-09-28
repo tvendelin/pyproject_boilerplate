@@ -4,7 +4,7 @@ PROJECT_VENV="v"
 DOC_SOURCE_ROOT="src/mymodule"
 PYTHON=${PROJECT_VENV}/bin/python
 
-all: dist 
+all: test coverage dist 
 
 v:
 	python3 -m venv v
@@ -25,15 +25,15 @@ html: venv
 test: tests.log
 
 tests.log: bootstrap tests
-	#${PYTHON} -m pip install ".[test]"
 	. ${PROJECT_VENV}/bin/activate;\
-	${PYTHON} -m unittest discover -s tests -b 2> tests.log
+	${PYTHON} -m unittest discover -b 2> tests.log
 
 coverage: bootstrap
-	coverage run -m unittest
+	. ${PROJECT_VENV}/bin/activate;\
+	coverage run -m unittest;\
 	coverage html
 
-dist: tests.log
+dist: 
 	${PYTHON} -m pip install -U build
 	${PYTHON} -m build
 
