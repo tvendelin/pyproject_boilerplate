@@ -4,8 +4,9 @@
 dist/
 build/
 
-# debmake
-.pybuild
+# Debian
+debian/mymodule
+.pybuild/
 
 # pydoc generated documentation
 html/

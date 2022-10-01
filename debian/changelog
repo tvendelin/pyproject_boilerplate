@@ -1,0 +1,6 @@
+mymodule (0.2.0) all; urgency=low
+
+  * Initial release. Closes: #nnnn
+    <nnnn is the bug number of your ITP>
+
+ -- Toomas Vendelin <toomas.vendelin@ionos.com>  Wed, 28 Sep 2022 20:00:34 +0200
