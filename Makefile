@@ -34,8 +34,8 @@ coverage: bootstrap
 	coverage html
 
 dist: 
-	${PYTHON} -m pip install -U build
-	${PYTHON} -m build
+	python3 -m pip install -U build
+	python3 -m build
 
 upload: build
 	echo "To be done"
