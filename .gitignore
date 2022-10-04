@@ -24,3 +24,6 @@ dump/
 
 # virtual env 
 v/
+
+# Editor's backup files
+*.bak
