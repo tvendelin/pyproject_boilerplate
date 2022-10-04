@@ -37,8 +37,8 @@ dist:
 	python3 -m pip install -U build
 	python3 -m build
 
-upload: build
-	echo "To be done"
+upload: dist
+	python3 -m twine upload --repository gitlab dist/*
 
 clean:
 	rm -rf ${PROJECT_VENV}
