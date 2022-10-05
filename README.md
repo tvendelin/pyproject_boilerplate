@@ -180,5 +180,7 @@ and
 ```
 # $HOME/.config/pip/pip.conf
 [global]
-extra-index-url = https://your_token_name:y0Ur-t0ken@gitlab.pb.local/api/v4/projects/2354/packages/pypi/simple
+index-url = https://your_token_name:y0Ur-t0ken@gitlab.pb.local/api/v4/projects/2354/packages/pypi/simple
 ```
+
+If a package is not found in our internal index, Gitlab will forward the request to the global PyPI. Since `pip` does not prioritize repositories, using `extra-index-url` is a security risk (code injection).
