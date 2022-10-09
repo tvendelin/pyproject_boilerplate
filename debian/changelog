@@ -1,6 +1,5 @@
-mymodule (0.2.0) all; urgency=low
+mymodule (0.2.0) bullseye; urgency=low
 
-  * Initial release. Closes: #nnnn
-    <nnnn is the bug number of your ITP>
+  * Initial release.
 
  -- Toomas Vendelin <toomas.vendelin@ionos.com>  Wed, 28 Sep 2022 20:00:34 +0200
