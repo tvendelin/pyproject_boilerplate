@@ -4,8 +4,13 @@
 dist/
 build/
 
-# Debian
+# Debian-generated
 debian/mymodule
+debian/debhelper-build-stamp
+debian/files
+debian/mymodule.postinst.debhelper
+debian/mymodule.prerm.debhelper
+debian/mymodule.substvars
 .pybuild/
 
 # pydoc generated documentation
