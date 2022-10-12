@@ -1,6 +1,8 @@
 """
 Placeholder to test a project setup
 """
+import argparse
+
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 
@@ -18,8 +20,31 @@ def return_a_string():
 
 def main():
     """
-    Main function
+    Prints "Ohoo!" and exits.
+
+    This program doesn't do anything useful by itself,
+    but helps to develop packaging utilities by the virtue
+    of its very existence.
     """
+
+    parser = argparse.ArgumentParser(
+        prog="ohoo", description=main.__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument("bar", help="bar has no effect")
+    parser.add_argument(
+        "abracadabraabracadabrabracadabrabracadabrabracadabrabracadabrabracadabrabracadabrabracad",
+        help="this long param has no effect",
+    )
+    parser.add_argument("--foo", "-f", help="has no effect", metavar="Foo_value")
+    parser.add_argument(
+        "--baz-ladida",
+        "-b",
+        help=(
+            "has no effect whatever whatsoever has no effect whatever whatsoeverhas no effect"
+            " whatever whatsoever"
+        ),
+    )
+    parser.parse_args()
     print(return_a_string())
 
 

@@ -13,6 +13,10 @@ debian/mymodule.prerm.debhelper
 debian/mymodule.substvars
 .pybuild/
 
+# man pages
+man/
+man_md/
+
 # pydoc generated documentation
 html/
 
