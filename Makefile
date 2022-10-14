@@ -17,8 +17,17 @@ bootstrap: venv
 	. ${PROJECT_VENV}/bin/activate;\
 	${PYTHON} -m pip install -e ".[dev]"
 
+tidy: venv
+	. ${PROJECT_VENV}/bin/activate;\
+	echo "Running isort";\
+	isort src;\
+	echo "Running Black";\
+	black src;\
+	echo "Running Pylint";\
+	pylint src
+
 html: venv
-	${PROJECT_VENV}/bin/activate;\
+	. ${PROJECT_VENV}/bin/activate;\
 	${PYTHON} -m pip install -U pdoc3;\
 	${PYTHON} -m pdoc --html --force ${DOC_SOURCE_ROOT}
 

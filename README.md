@@ -75,11 +75,11 @@ The most natural way would probably be to call `mypackage -h` for the purpose.
 
 ### A Commented `.gitignore`
 
-A `.gitignore` file covering generated files and folders.  Non-trivial entries (at least) must be
-commented.  Example: In all likelihood, a developer would use a virtual environment.  For
-development's sake, the project root is the most natural place for it, but then it should be
-git-ignored. Instead of five developers adding their `venv` directory name each to `.gitignore`, one
-commented entry should do the trick (see [.gitignore example](.gitignore)).
+Non-trivial entries (at least) must be commented.  Example: In all likelihood, a developer would use
+a virtual environment.  For development's sake, the project root is the most natural place for it,
+but then it should be git-ignored. Instead of five developers adding their `venv` directory name
+each to `.gitignore`, one commented entry should do the trick (see [.gitignore
+example](.gitignore)).
 
 ## Goals and Means, or Which Tools to Use?
 
@@ -105,6 +105,8 @@ facilitates simpler CI/CD pipelines. The suggested targets are (see [Makefile](M
 make bootstrap
 # Create documentation in HTML
 make html
+# Run code formatters and linters
+make tidy
 
 make clean
 make test
@@ -112,6 +114,8 @@ make coverage
 make dist
 make upload
 ```
+
+Do not add `install` target as it will interfere with Debian tools.
 
 This gives teams/developers more flexibility over which tools to use, reducing disputes like
 `unittest` over `pytest` or `setuptools` over `poetry`.
