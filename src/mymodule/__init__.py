@@ -18,15 +18,11 @@ def return_a_string():
     return template.render(text="Ohoo!")
 
 
-def main():
+def get_argument_parser():
     """
-    Prints "Ohoo!" and exits.
-
-    This program doesn't do anything useful by itself,
-    but helps to develop packaging utilities by the virtue
-    of its very existence.
+    Returns an instance of argparse.ArgumentParser.
+    Useful for generation of man pages.
     """
-
     parser = argparse.ArgumentParser(
         prog="ohoo", description=main.__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
@@ -43,7 +39,21 @@ def main():
             "has no effect whatever whatsoever has no effect whatever whatsoeverhas no effect"
             " whatever whatsoever"
         ),
+        required=True,
     )
+    return parser
+
+
+def main():
+    """
+    Prints "Ohoo!" and exits.
+
+    This program doesn't do anything useful by itself,
+    but helps to develop packaging utilities by the virtue
+    of its very existence.
+    """
+
+    parser = get_argument_parser()
     parser.parse_args()
     print(return_a_string())
 

@@ -6,10 +6,26 @@ from importlib.metadata import distribution
 DIST = "mypackage"
 
 
+def get_argument_parser():
+    """
+    Returns an instance of argparse.ArgumentParser.
+    Useful for generation of man pages.
+    """
+    parser = argparse.ArgumentParser(description="Display available CLI utilities", add_help=True)
+
+    parser.add_argument(
+        "-q",
+        "--quiet",
+        help="Display full paths to commands without descriptions",
+        action="store_true",
+    )
+    return parser
+
+
 def list_tasks():
     "Display available command-line tools"
 
-    parser = argparse.ArgumentParser(description="Display available CLI utilities", add_help=True)
+    parser = get_argument_parser()
 
     parser.add_argument(
         "-q",
